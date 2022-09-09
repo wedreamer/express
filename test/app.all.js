@@ -9,6 +9,7 @@ describe('app.all()', function(){
     var app = express();
     var cb = after(2, done)
 
+    // 为每个请求添加路由
     app.all('/tobi', function(req, res){
       res.end(req.method);
     });
@@ -26,6 +27,7 @@ describe('app.all()', function(){
     var app = express()
       , n = 0;
 
+    // 只会进入一次
     app.all('/*', function(req, res, next){
       if (n++) return done(new Error('DELETE called several times'));
       next();

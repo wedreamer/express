@@ -15,13 +15,18 @@ function render(path, options, fn) {
 
 describe('app', function(){
   describe('.engine(ext, fn)', function(){
+    // 应该对应一个模板引擎
     it('should map a template engine', function(done){
       var app = express();
 
+      // 配置模板引擎
       app.set('views', path.join(__dirname, 'fixtures'))
+      // 配置模板引擎要匹配的文件
       app.engine('.html', render);
+      // 定义一个 user
       app.locals.user = { name: 'tobi' };
 
+      // 模板引擎解析
       app.render('user.html', function(err, str){
         if (err) return done(err);
         assert.strictEqual(str, '<p>tobi</p>')

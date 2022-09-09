@@ -4,6 +4,7 @@ var express = require('../')
   , request = require('supertest');
 
 describe('app.del()', function(){
+  // del
   it('should alias app.delete()', function(done){
     var app = express();
 
